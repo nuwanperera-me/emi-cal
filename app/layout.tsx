@@ -18,11 +18,17 @@ export const metadata: Metadata = {
   title: title,
   description: description,
   creator: "@snelusha",
+  manifest: "/manifest.json",
+  keywords: ["nextjs", "next14", "pwa", "next-pwa"],
   openGraph: {
     title: title,
     description: description,
     images: [image],
   },
+  icons: [
+    { rel: "apple-touch-icon", url: "icons/nextjs-icon-128.png" },
+    { rel: "icon", url: "icons/nextjs-icon-128.png" },
+  ],
   twitter: {
     card: "summary_large_image",
     title: title,

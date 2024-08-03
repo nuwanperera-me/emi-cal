@@ -1,0 +1,16 @@
+{
+  "name": "Test Pwa",
+  "short_name": "test pwa",
+  "theme_color": "#00ff00",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "natural",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    { "src": "/icons/nextjs-icon-512.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/icons/nextjs-icon-256.png", "type": "image/png", "sizes": "256x256" },
+    { "src": "/icons/nextjs-icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ],
+  "splash_pages": null
+}
