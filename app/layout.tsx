@@ -9,15 +9,16 @@ import { geistSans } from "@/styles/fonts";
 
 import type { Metadata } from "next";
 
-const title = "something";
-const description = "The plate is boiling. Just craft something!";
+const title = "EMI Calculator";
+const description =
+  "Quickly calculate monthly EMI payments on loans. Easy-to-use, accurate results. Compare loan options. Financial planning tool.";
 const image =
   "https://raw.githubusercontent.com/somehq/somestatic/main/something/og.png";
 
 export const metadata: Metadata = {
   title: title,
   description: description,
-  creator: "@snelusha",
+  creator: "@nuwanperera-me",
   manifest: "/manifest.json",
   keywords: ["nextjs", "next14", "pwa", "next-pwa"],
   openGraph: {
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     title: title,
     description: description,
     images: [image],
-    creator: "@snelusha",
+    creator: "@nuwanperera-me",
   },
   metadataBase: new URL("http://localhost:3000"),
 };
