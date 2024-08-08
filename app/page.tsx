@@ -1,9 +1,12 @@
 "use client";
 
-import { AmountCard } from "@/components/card";
-import { CalculatorForm } from "@/components/form";
-import { Button } from "@/components/ui/button";
 import { useState, useCallback } from "react";
+import Link from "next/link";
+
+import { CalculatorForm } from "@/components/form";
+
+import { AmountCard } from "@/components/card";
+import { Button } from "@/components/ui/button";
 
 function calculateEMI(
   principal: number,
@@ -43,39 +46,42 @@ export default function Home() {
   }, [formData]);
 
   return (
-    <main className="mx-auto flex h-screen w-full max-w-md flex-col items-center justify-center- space-y-12 p-4">
-      <h1 className="text-3xl font-semibold">Loan Calculator</h1>
-      <section className="flex w-full flex-col items-center justify-center gap-4">
-        <CalculatorForm handleInputChange={handleInputChange} />
-        <Button
-          disabled={
-            !formData.principal ||
-            !formData.annualRate ||
-            !formData.tenureInMonths
-          }
-          onClick={handleCalculate}
-          variant="accent"
-          size="sm"
-          className="w-full max-w-md"
-        >
-          Calculate
-        </Button>
-      </section>
-      {/* <div>
-        <p>Principal Amount: {formData.principal}</p>
-        <p>Annual Interest Rate: {formData.annualRate}%</p>
-        <p>Tenure: {formData.tenureInMonths} months</p>
-        <p>Equated Monthly Installment (EMI): {emi.toFixed(2)}</p>
-      </div> */}
-
-      <AmountCard amount={formData.principal} emi={emi} months={formData.tenureInMonths} />
-      {/* <div>
-        <div className="flex flex-col items-center">
-          <h2 className="text-xl">Equated Monthly Installment</h2>
-          <p>{(parseInt(formData.tenureInMonths / 12).toString())} year{(formData.tenureInMonths/12)}</p>
-          <p className="text-3xl text-accent-foreground">$ {emi.toFixed(2)}</p>
-        </div>
-      </div> */}
+    <main className="flex min-h-screen w-full flex-col items-center justify-between p-2">
+      <h1 className="text-2xl font-bold mt-6">Loan Calculator</h1>
+      <div className="flex w-full max-w-lg flex-col items-center space-y-12 p-4">
+        <section className="flex w-full flex-col items-center justify-center gap-4">
+          <CalculatorForm handleInputChange={handleInputChange} />
+          <Button
+            disabled={
+              !formData.principal ||
+              !formData.annualRate ||
+              !formData.tenureInMonths
+            }
+            onClick={handleCalculate}
+            variant="accent"
+            size="default"
+            className="w-full"
+          >
+            Calculate
+          </Button>
+        </section>
+        <AmountCard
+          amount={formData.principal}
+          emi={emi}
+          months={formData.tenureInMonths}
+        />
+      </div>
+      <footer className="flex h-12 w-full flex-col text-center text-muted-foreground">
+        <p className="text-sm">
+          Crafted by{" "}
+          <Link
+            className="cursor-pointer"
+            href="https://github.com/nuwanperera-me"
+          >
+            Nuwan Perera
+          </Link>
+        </p>
+      </footer>
     </main>
   );
 }

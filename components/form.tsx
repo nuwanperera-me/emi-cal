@@ -16,7 +16,7 @@ export const CalculatorForm = ({ handleInputChange }: FormProps) => {
   };
 
   return (
-    <form className="flex w-full max-w-md flex-col gap-4">
+    <form className="flex w-full flex-col gap-4">
       <div className="flex flex-col gap-2">
         <label htmlFor="principal" className="text-sm font-semibold">
           Principal Amount:
@@ -34,7 +34,7 @@ export const CalculatorForm = ({ handleInputChange }: FormProps) => {
               handleInputChange("principal", safeConvert(e.target.value))
             }
           />
-          <div className="inline-flex h-full w-12 select-none items-center justify-center bg-muted text-lg font-semibold text-muted-foreground">
+          <div className="inline-flex min-h-10 w-12 select-none items-center justify-center bg-muted text-lg font-semibold text-muted-foreground">
             <p>$</p>
           </div>
         </div>
@@ -56,7 +56,7 @@ export const CalculatorForm = ({ handleInputChange }: FormProps) => {
               handleInputChange("annualRate", safeConvert(e.target.value))
             }
           />
-          <div className="inline-flex h-full w-12 select-none items-center justify-center bg-muted text-lg font-semibold text-muted-foreground">
+          <div className="inline-flex min-h-10 w-12 select-none items-center justify-center bg-muted text-lg font-semibold text-muted-foreground">
             <p>%</p>
           </div>
         </div>
