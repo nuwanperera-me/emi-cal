@@ -14,7 +14,7 @@ const title = "EMI Calculator";
 const description =
   "Quickly calculate monthly EMI payments on loans. Easy-to-use, accurate results. Compare loan options. Financial planning tool.";
 const image =
-  "https://raw.githubusercontent.com/somehq/somestatic/main/something/og.png";
+  "https://loan-calculator-chi-two.vercel.app/og.png";
 
 export const metadata: Metadata = {
   title: title,
