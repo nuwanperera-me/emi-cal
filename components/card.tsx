@@ -1,3 +1,13 @@
+"use client";
+
+import { useState } from "react";
+
+import {
+  CheckIcon,
+  ClipboardDocumentCheckIcon,
+} from "@heroicons/react/24/solid";
+import { Button } from "./ui/button";
+
 export const AmountCard = ({
   emi,
   months,
@@ -12,16 +22,22 @@ export const AmountCard = ({
     currency: "USD",
   });
 
+  const [copied, setCopied] = useState(false);
+
   const TotalPayment = emi * months;
   const Interest = TotalPayment - amount;
 
-  const formatedPayemnt = USDollar.format(TotalPayment);
-  const formatedEmi = USDollar.format(emi);
-  const formatedAmount = USDollar.format(amount);
-  const formatedInterest = USDollar.format(Interest);
+  const formattedPayemnt = USDollar.format(TotalPayment);
+  const formattedEmi = USDollar.format(emi);
+  const formattedAmount = USDollar.format(amount);
+  const formattedInterest = USDollar.format(Interest);
 
   const percentage = ((Interest / TotalPayment) * 100).toString().concat("%");
-
+  const formattedText = `Equated Monthly Installment: ${formattedEmi}
+Total Amount(principal): ${formattedAmount}
+Total Payemt: ${formattedPayemnt}
+Total Interest: ${formattedInterest}
+  `;
   const copyContent = async (text: string | number) => {
     try {
       await navigator.clipboard.writeText(text.toString());
@@ -31,14 +47,33 @@ export const AmountCard = ({
   };
 
   return (
-    <section className="gap-4- flex w-full flex-col items-center rounded-lg border border-border bg-secondary p-4">
+    <section className="relative flex w-full flex-col items-center rounded-lg border border-border bg-secondary p-4">
+      <Button
+        className="group absolute right-2 top-2 hover:bg-muted"
+        variant="secondary"
+        size="icon"
+        onClick={() => {
+          copyContent(formattedText);
+          setCopied(true);
+          setTimeout(() => setCopied(false), 1500);
+        }}
+      >
+        <ClipboardDocumentCheckIcon
+          className={`opacity-1 absolute h-4 w-4 text-muted-foreground transition-colors duration-150 group-hover:text-primary-foreground ${copied ? "opacity-0" : "opacity-100"} transition-opacity`}
+        />
+
+        <CheckIcon
+          className={`h-4 w-4 text-emerald-600 ${copied ? "opacity-100" : "opacity-0"} transition-opacity duration-150`}
+        />
+        <p className="sr-only">Copy to clipboard</p>
+      </Button>
       <div className="mb-12 text-center font-normal">
         <p className="mb-6 font-semibold">Equated Monthly Installment</p>
         <p
           className="cursor-pointer text-3xl font-semibold text-accent-foreground hover:underline"
-          onClick={() => copyContent(formatedEmi)}
+          onClick={() => copyContent(formattedEmi)}
         >
-          {formatedEmi}
+          {formattedEmi}
         </p>
         <p>
           {/* @ts-ignore */}
@@ -69,27 +104,27 @@ export const AmountCard = ({
           Total Payment:{" "}
           <span
             className=" cursor-pointer font-semibold text-primary-foreground hover:underline"
-            onClick={() => copyContent(formatedPayemnt)}
+            onClick={() => copyContent(formattedPayemnt)}
           >
-            {formatedPayemnt}
+            {formattedPayemnt}
           </span>
         </p>
         <p>
           Total Amount:{" "}
           <span
             className=" cursor-pointer font-semibold text-primary-foreground hover:underline"
-            onClick={() => copyContent(formatedAmount)}
+            onClick={() => copyContent(formattedAmount)}
           >
-            {formatedAmount}
+            {formattedAmount}
           </span>
         </p>
         <p>
           Total Interest:{" "}
           <span
             className="cursor-pointer font-semibold text-primary-foreground hover:underline"
-            onClick={() => copyContent(formatedInterest)}
+            onClick={() => copyContent(formattedInterest)}
           >
-            {formatedInterest}
+            {formattedInterest}
           </span>
         </p>
       </div>
