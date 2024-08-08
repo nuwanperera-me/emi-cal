@@ -68,7 +68,7 @@ export default function Home() {
         <p>Equated Monthly Installment (EMI): {emi.toFixed(2)}</p>
       </div> */}
 
-      <AmountCard emi={emi} months={formData.tenureInMonths} />
+      <AmountCard amount={formData.principal} emi={emi} months={formData.tenureInMonths} />
       {/* <div>
         <div className="flex flex-col items-center">
           <h2 className="text-xl">Equated Monthly Installment</h2>
