@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { geistSans } from "@/styles/fonts";
 
 import type { Metadata } from "next";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const title = "EMI Calculator";
 const description =
@@ -51,7 +52,16 @@ export default function RootLayout({
           geistSans.variable,
         )}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );
