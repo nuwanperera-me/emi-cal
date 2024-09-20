@@ -9,12 +9,12 @@ import { geistSans } from "@/styles/fonts";
 
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
+import Link from "next/link";
 
 const title = "EMI Calculator";
 const description =
   "Quickly calculate monthly EMI payments on loans. Easy-to-use, accurate results. Compare loan options. Financial planning tool.";
-const image =
-  "https://loan-calculator-chi-two.vercel.app/og.png";
+const image = "https://loan-calculator-chi-two.vercel.app/og.png";
 
 export const metadata: Metadata = {
   title: title,
@@ -48,7 +48,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "bg-background font-sans text-sm text-secondary-foreground antialiased",
+          "w-full min-h-screen flex flex-col justify-between bg-background font-sans text-sm text-secondary-foreground antialiased",
           geistSans.variable,
         )}
       >
@@ -62,6 +62,17 @@ export default function RootLayout({
             {children}
           </ThemeProvider>
         </Providers>
+        <footer className="flex h-12 w-full flex-col text-center text-muted-foreground">
+          <p className="text-sm">
+            Crafted by{" "}
+            <Link
+              className="cursor-pointer"
+              href="https://github.com/nuwanperera-me"
+            >
+              Nuwan Perera
+            </Link>
+          </p>
+        </footer>
       </body>
     </html>
   );

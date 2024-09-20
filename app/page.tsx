@@ -46,8 +46,8 @@ export default function Home() {
   }, [formData]);
 
   return (
-    <main className="flex min-h-screen w-full flex-col items-center justify-between p-2">
-      <h1 className="text-2xl font-bold mt-6">Loan Calculator</h1>
+    <main className="flex w-full flex-col items-center justify-between p-2">
+      <h1 className="mt-6 text-2xl sm:text-4xl font-bold">Loan Calculator</h1>
       <div className="flex w-full max-w-lg flex-col items-center space-y-12 p-4">
         <section className="flex w-full flex-col items-center justify-center gap-4">
           <CalculatorForm handleInputChange={handleInputChange} />
@@ -71,17 +71,6 @@ export default function Home() {
           months={formData.tenureInMonths}
         />
       </div>
-      <footer className="flex h-12 w-full flex-col text-center text-muted-foreground">
-        <p className="text-sm">
-          Crafted by{" "}
-          <Link
-            className="cursor-pointer"
-            href="https://github.com/nuwanperera-me"
-          >
-            Nuwan Perera
-          </Link>
-        </p>
-      </footer>
     </main>
   );
 }
